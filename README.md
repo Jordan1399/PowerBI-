@@ -39,6 +39,9 @@ A more extensive practice report covering a wider range of visual types across d
 | `04-decomposition-tree-with-multiline-chart.png` | A decomposition tree breaking Sum of Profit down interactively across Country → Product → Date, paired with a multi-line chart tracking Sum of Profit by Quarter for each of the six products |
 | `05-buttons-bookmark-navigation.png` | Three pie charts (Sum of Sales, Sum of Profit, Average of Profit, all by Product) alongside a row of custom bookmark buttons (`Sum(Sales)`, `Average Profit by Product`, `Total Profit by Product`, `Full View Reset`, `Sum Sales by Country`) that swap the report view on click |
 | `06-bubble-map-multi-measure-tooltip.png` | A bubble map plotting Sum of Sales (bubble size) by Country, with a custom tooltip on hover showing Sum of Sales, Sum of Gross Sales, Sum of Units Sold, and Max of Profit for the selected country in one combined view |
+| `07-filled-map-conditional-formatting-setup.png` + `08-filled-map-country-profit-sales-tooltip.png` | The **Filled Map** page, shown as a pair: `07` is the conditional formatting setup, a three-point gradient (red → orange → green) applied to Sum of Profit to color each country; `08` is the resulting choropleth map with a custom tooltip (Country, Sum of Profit, Average of Sales) shown on hover over Canada |
+| `09-stacked-bar-chart-country-segment.png` | The **Stacked Bar Chart** page: a horizontal stacked bar chart of Sum of Profit by Country, broken into five colored segments (Channel Partners, Enterprise, Government, Midmarket, Small Business) per country |
+| `10-filter-slicer-multi-visual-page.png` | The **Filter_Slicer** page: a compact multi-visual layout (pie chart, donut chart, column chart, line chart, and cards) all scoped to a Country slicer, with the Year field's drill-through configuration panel open, showing how a field is set to "Used as category" so it can drive a separate drill-through detail page |
 
 **Skills demonstrated:**
 - Multi-page report structure with a bookmark-based navigation landing page
@@ -48,6 +51,9 @@ A more extensive practice report covering a wider range of visual types across d
 - Decomposition tree for ad-hoc, user-driven breakdown of a measure across multiple dimensions
 - Bookmarks + button navigation to let a viewer swap between saved report states without needing filters
 - Bubble map with a custom multi-field tooltip, packing four measures into a single hover interaction
+- Filled map (choropleth) with custom three-point gradient conditional formatting, plus a configured tooltip
+- Stacked bar chart with a categorical legend (Segment) broken out per country
+- Configuring a field's drill-through behavior so a slicer page can route to a dedicated detail page
 - Filter and slicer panels scoped per page
 - Report organization across dedicated pages by visual type, useful for a portfolio/reference structure
 
@@ -55,4 +61,5 @@ A more extensive practice report covering a wider range of visual types across d
 
 - The dynamic callout text in the stacked bar chart page is worth documenting in more detail later, it's a good example of combining a DAX measure with `SELECTEDVALUE()` (or similar) to build a sentence that updates with user selection, rather than a static title.
 - The Buttons page is a good one to walk through in an interview: bookmarks capture a specific state of the report (which visual is visible, which filters are applied) and buttons trigger a jump to that saved state, this is different from a slicer, which filters data rather than swapping the whole view.
-- Still worth adding screenshots of the remaining pages (`Filter_Slicer`, `Filled Map`, `Table&Matrix`) to fully document the 11-page report.
+- The Filled Map's conditional formatting is worth remembering as a talking point: a three-point gradient (min/center/max) gives more nuance than a simple two-color scale, useful when values cluster around a midpoint rather than spreading evenly.
+- Only `Table&Matrix` is left undocumented out of the 11 report pages.
