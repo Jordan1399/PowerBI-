@@ -1,6 +1,6 @@
-# Power BI Practice — Financials Sample Dataset
+# Power BI Practice
 
-Practice dashboards and reports built in Power BI Desktop using Microsoft's built-in **Financials** sample dataset. The dataset contains one `financials` table with fields including `Segment`, `Country`, `Product`, `Discount Band`, `Units Sold`, `Manufacturing Price`, `Sale Price`, `Gross Sales`, `Discounts`, `Sales`, `COGS`, `Profit`, and a `Date` hierarchy (Year, Month Name, Month Number).
+Practice dashboards, reports, and data models built in Power BI Desktop. Includes work on Microsoft's built-in **Financials** sample dataset (single flat table) and the public **Brazilian Olist E-Commerce** dataset (nine related raw tables, requiring actual data modeling).
 
 ## Projects
 
@@ -57,9 +57,33 @@ A more extensive practice report covering a wider range of visual types across d
 - Filter and slicer panels scoped per page
 - Report organization across dedicated pages by visual type, useful for a portfolio/reference structure
 
+---
+
+### 3. Brazilian Olist E-Commerce — data modeling & drill-down practice
+
+**Folder:** [`brazilian-olist-ecommerce-model/`](brazilian-olist-ecommerce-model/)
+
+Unlike the Financials projects above (a single flat table), this project works from the public **Olist Brazilian E-Commerce** dataset, nine separate raw tables (`olist_customers_dataset`, `olist_geolocation_dataset`, `olist_order_items_dataset`, `olist_order_payments_dataset`, `olist_order_reviews_dataset`, `olist_orders_dataset`, `olist_products_dataset`, `olist_sellers_dataset`, `product_category_name_translation`) that have to be related to each other before any visual can be built. This is data modeling practice, not just chart-building.
+
+| Screenshot | What it shows |
+|---|---|
+| `01-relationship-editor-reviews-to-orders.png` | The relationship editor connecting `olist_order_reviews_dataset` to `olist_orders_dataset` on `order_id`, set to a Many-to-one (`*:1`) cardinality with cross-filter direction set to Both and the relationship marked active |
+| `02-full-data-model-diagram.png` | The full model view showing how all the tables connect: reviews → orders → customers, orders → payments, and order items bridging orders → products, each relationship labeled with its cardinality (1 / \*) |
+| `03-drill-down-review-score-by-month.png` | A line chart of Average review_score by Month (filtered to 2017), with the drill menu open showing Drill up / Drill down options and a tooltip for April (4.04) |
+| `04-drill-up-review-score-by-quarter.png` | The same measure one level up the date hierarchy, Average review_score by Quarter, with a tooltip for Qtr 3 (4.20) |
+| `05-drill-up-review-score-by-year.png` | The same measure at the top of the hierarchy, Average review_score by Year, with a tooltip for 2017 (4.11) |
+
+**Skills demonstrated:**
+- Building relationships between raw, un-joined tables: selecting the correct key column on each side, setting cardinality (many-to-one), and choosing a cross-filter direction
+- Reading and reasoning about a full data model diagram, tracing how a fact table (orders) connects out to multiple dimension and bridge tables
+- Using a built-in date hierarchy (Year → Quarter → Month → Day) with drill up/drill down to move fluidly between levels of time granularity on the same visual, rather than building a separate chart per granularity
+- Interpreting a trend across drill levels: review satisfaction dipped mid-2017 (visible at the month level) before settling, useful for practicing how to read a metric at different resolutions without losing the underlying story
+
 ## Notes to self
 
 - The dynamic callout text in the stacked bar chart page is worth documenting in more detail later, it's a good example of combining a DAX measure with `SELECTEDVALUE()` (or similar) to build a sentence that updates with user selection, rather than a static title.
 - The Buttons page is a good one to walk through in an interview: bookmarks capture a specific state of the report (which visual is visible, which filters are applied) and buttons trigger a jump to that saved state, this is different from a slicer, which filters data rather than swapping the whole view.
 - The Filled Map's conditional formatting is worth remembering as a talking point: a three-point gradient (min/center/max) gives more nuance than a simple two-color scale, useful when values cluster around a midpoint rather than spreading evenly.
 - Only `Table&Matrix` is left undocumented out of the 11 report pages.
+- The Olist model is the strongest single piece for demonstrating real data modeling skill, since the Financials dataset comes pre-flattened as one table. Worth leading with the Olist project if asked to walk through one example in an interview.
+- Many-to-one relationships in Power BI always point from the "many" side (the fact table, like reviews or order items) to the "one" side (the dimension table, like orders); getting this backwards is a common beginner mistake worth double-checking on each relationship.
