@@ -79,6 +79,19 @@ Unlike the Financials projects above (a single flat table), this project works f
 - Using a built-in date hierarchy (Year → Quarter → Month → Day) with drill up/drill down to move fluidly between levels of time granularity on the same visual, rather than building a separate chart per granularity
 - Interpreting a trend across drill levels: review satisfaction dipped mid-2017 (visible at the month level) before settling, useful for practicing how to read a metric at different resolutions without losing the underlying story
 
+### 4. DAX Practice Reference
+
+**Folder:** [`DAX/`](DAX/)
+
+A focused reference of DAX practice screenshots and transcribed formulas covering:
+
+- Measures with `SUM`, `COUNTROWS`, `DISTINCTCOUNT`, and `AVERAGE`
+- Row-context arithmetic in calculated columns
+- Calculated tables built with `FILTER`, including numeric and numeric-plus-country conditions
+- Date, month-number, month-name, and year helper fields as they appear in the `financials` model
+
+See [`DAX/README.md`](DAX/README.md) for expression explanations, modeling notes, and the screenshot index.
+
 ## Notes to self
 
 - The dynamic callout text in the stacked bar chart page is worth documenting in more detail later, it's a good example of combining a DAX measure with `SELECTEDVALUE()` (or similar) to build a sentence that updates with user selection, rather than a static title.
